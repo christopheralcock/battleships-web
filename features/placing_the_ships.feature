@@ -11,6 +11,6 @@ Feature: placing the ships
 
   Scenario: Placing a battleship
     Given I am on the battleship page
-    And I fill in "coordinate2" with "F1"
+    And I fill in "coordinate2" with "A2"
     When I press "Submit"
     Then I should see "Battleship placed!"

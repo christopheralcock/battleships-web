@@ -1,0 +1,18 @@
+
+<pre>
+<body style="font-family:courier; line-height: 0">
+  <p>Cruiser placed! Your name is still <%=@visitor%>!!!!!!!!</p>
+  <% @matrix.split("\n").each do | row | %>
+    <p><%= row %></p>
+  <% end %>
+  <p>Place your Destroyer!(2 spaces long)</p>
+  <p>Coordinates:</p>
+  <form action="/submarine">
+    <input name="coordinate4" type="text">
+    <select name="destroyer_placing">
+    <option value=horizontally>Horizontally to the right</option>
+    <option value=vertically>Vertically down</option>
+    <input value="Submit" type="submit">
+  </form>
+</body>
+</pre>

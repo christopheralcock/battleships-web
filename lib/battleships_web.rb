@@ -80,6 +80,34 @@ class BattleshipsWeb < Sinatra::Base
     erb :destroyer
   end
 
+  get '/submarine' do
+    @visitor = session[:name]
+    game = session[:game]
+    coordinate = params[:coordinate4].to_s.upcase
+    orientation = params[:destroyer_placing].to_sym
+    session.each do |k,v|
+      puts k
+      puts v
+    end
+    game.player_1.place_ship Ship.destroyer, coordinate, orientation
+    @matrix = game.own_board_view game.player_1
+    erb :submarine
+  end
+
+  get '/boardplaced' do
+    @visitor = session[:name]
+    game = session[:game]
+    coordinate = params[:coordinate5].to_s.upcase
+    orientation = params[:submarine_placing].to_sym
+    session.each do |k,v|
+      puts k
+      puts v
+    end
+    game.player_1.place_ship Ship.submarine, coordinate, orientation
+    @matrix = game.own_board_view game.player_1
+    erb :boardplaced
+  end
+
   set :views, Proc.new { File.join(root, "..", "views") }
 
   # start the server if ruby file executed directly
