@@ -1,1 +1,20 @@
-Aircraft Carrier placed!
+
+
+
+<pre>
+<body style="font-family:courier; line-height: 0">
+  <p>"Aircraft Carrier placed! Your name is still <%=@visitor%>!!!!!!!!"</p>
+  <% @matrix.split("\n").each do | row | %>
+    <p><%= row %></p>
+  <% end %>
+  <!-- <p>Place your Aircraft Carrier!(5 spaces long)</p>
+  <p>Coordinates:</p>
+  <form action="/battleship">
+    <input name="coordinate" type="text">
+    <select name="aircraft_carrier_placing">
+    <option value=:horizontally>Horizontally to the right</option>
+    <option value=:vertically>Vertically down</option>
+    <input value="Submit" type="submit">
+  </form> -->
+</body>
+</pre>

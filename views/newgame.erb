@@ -2,8 +2,8 @@
 <pre>
 <body style="font-family:courier; line-height: 0">
   <p>"Here is your empty board, <%=@visitor%>!"</p>
-  <% @matrix.split("\n").each do | element | %>
-    <p><%= element %></p>
+  <% @matrix.split("\n").each do | row | %>
+    <p><%= row %></p>
   <% end %>
   <p>Place your Aircraft Carrier!(5 spaces long)</p>
   <p>Coordinates:</p>

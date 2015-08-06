@@ -3,10 +3,11 @@ require 'battleships'
 
 class BattleshipsWeb < Sinatra::Base
 
-  use Rack::Session::Cookie, :key => 'rack.session',
-                           :path => '/',
-                           :secret => 'your_secret'
+  # use Rack::Session::Cookie, :key => 'rack.session',
+  #                          :path => '/',
+  #                          :secret => 'your_secret'
 
+  enable :sessions
 
   get '/' do
     erb :index
@@ -26,6 +27,8 @@ class BattleshipsWeb < Sinatra::Base
     game = Game.new Player, Board
     @matrix = game.own_board_view game.player_1
     @visitor = session[:name]
+    session[:game] = game
+    session[:matrix] = @matrix
     session.each do |k,v|
       puts k
       puts v
@@ -36,13 +39,15 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/battleship' do
-    # game.player_1.place_ship Ship.aircraft_carrier
-    # erb :battleship
     @visitor = session[:name]
+    game = session[:game]
+    @matrix = session[:matrix]
+    game.player_1.place_ship Ship.aircraft_carrier, :B4, :vertically
     session.each do |k,v|
       puts k
       puts v
     end
+    erb :battleship
   end
 
   set :views, Proc.new { File.join(root, "..", "views") }
