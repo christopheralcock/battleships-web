@@ -26,6 +26,12 @@ module NavigationHelpers
   when /the successful name page/
     '/name?name=Fred'
 
+  when /the battleship page/
+    '/battleship'
+
+  when /the cruiser page/
+    '/cruiser'
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

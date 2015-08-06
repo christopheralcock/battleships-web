@@ -1,15 +1,15 @@
 
 <pre>
 <body style="font-family:courier; line-height: 0">
-  <p>Aircraft Carrier placed! Your name is still <%=@visitor%>!!!!!!!!</p>
+  <p>Battleship placed! Your name is still <%=@visitor%>!!!!!!!!</p>
   <% @matrix.split("\n").each do | row | %>
     <p><%= row %></p>
   <% end %>
-  <p>Place your Battleship!(4 spaces long)</p>
+  <p>Place your Cruiser!(3 spaces long)</p>
   <p>Coordinates:</p>
-  <form action="/cruiser">
-    <input name="coordinate2" type="text">
-    <select name="battleship_placing">
+  <form action="/destroyer">
+    <input name="coordinate3" type="text">
+    <select name="cruiser_placing">
     <option value=horizontally>Horizontally to the right</option>
     <option value=vertically>Vertically down</option>
     <input value="Submit" type="submit">

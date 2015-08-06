@@ -41,13 +41,43 @@ class BattleshipsWeb < Sinatra::Base
   get '/battleship' do
     @visitor = session[:name]
     game = session[:game]
-    game.player_1.place_ship Ship.aircraft_carrier, :B4, :vertically
+    coordinate = params[:coordinate].to_s.upcase
+    orientation = params[:aircraft_carrier_placing].to_sym
+    game.player_1.place_ship Ship.aircraft_carrier, coordinate, orientation
     @matrix = game.own_board_view game.player_1
     session.each do |k,v|
       puts k
       puts v
     end
     erb :battleship
+  end
+
+  get '/cruiser' do
+    @visitor = session[:name]
+    game = session[:game]
+    coordinate = params[:coordinate2].to_s.upcase
+    orientation = params[:battleship_placing].to_sym
+    session.each do |k,v|
+      puts k
+      puts v
+    end
+    game.player_1.place_ship Ship.battleship, coordinate, orientation
+    @matrix = game.own_board_view game.player_1
+    erb :cruiser
+  end
+
+  get '/destroyer' do
+    @visitor = session[:name]
+    game = session[:game]
+    coordinate = params[:coordinate3].to_s.upcase
+    orientation = params[:cruiser_placing].to_sym
+    session.each do |k,v|
+      puts k
+      puts v
+    end
+    game.player_1.place_ship Ship.cruiser, coordinate, orientation
+    @matrix = game.own_board_view game.player_1
+    erb :destroyer
   end
 
   set :views, Proc.new { File.join(root, "..", "views") }
