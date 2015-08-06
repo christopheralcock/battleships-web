@@ -38,6 +38,12 @@ module NavigationHelpers
   when /the submarine page/
     '/submarine'
 
+  when /the boardplaced page/
+    '/boardplaced'
+
+  when /the playgame page/
+    '/playgame'
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

@@ -1,1 +1,13 @@
-<h1>'Your board has been placed, <%=@visitor%>!</h1>
+
+<pre>
+
+<h1>Your board has been placed, <%=@visitor%>!</h1>
+<body style="font-family:courier; line-height: 0">
+<% @matrix.split("\n").each do | row | %>
+  <p><%= row %></p>
+<% end %>
+<form action="/playgame">
+<input value="Let's play a game" type="submit">
+</form>
+</body>
+</pre>
