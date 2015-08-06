@@ -41,8 +41,8 @@ class BattleshipsWeb < Sinatra::Base
   get '/battleship' do
     @visitor = session[:name]
     game = session[:game]
-    @matrix = session[:matrix]
     game.player_1.place_ship Ship.aircraft_carrier, :B4, :vertically
+    @matrix = game.own_board_view game.player_1
     session.each do |k,v|
       puts k
       puts v
