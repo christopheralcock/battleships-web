@@ -9,6 +9,8 @@ class BattleshipsWeb < Sinatra::Base
 
   enable :sessions
 
+
+
   get '/' do
     erb :index
   end
@@ -20,11 +22,17 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/newgame' do
-    game = Game.new Player, Board
+    if session[:game]
+      game = session[:game]
+    else
+      game = Game.new Player, Board
+      session[:game] = game
+    end
     @matrix = game.own_board_view game.player_1
     @visitor = session[:name]
     session[:game] = game
     session[:matrix] = @matrix
+    p session
     erb :newgame
   end
 
